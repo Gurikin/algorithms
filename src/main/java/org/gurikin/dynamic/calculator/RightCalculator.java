@@ -11,8 +11,6 @@ public class RightCalculator {
 
     public static String findMinCalc(int target) {
         int[] dp = new int[target + 1];
-        // Map<Integer, Integer> dp = new LinkedHashMap<>();
-        // dp.put(1, 0);
         dp[1] = 0;
         int min;
         for (int i = 2; i <= target; i++) {
@@ -28,7 +26,7 @@ public class RightCalculator {
 
         StringBuilder sb = new StringBuilder();
         int pointer = target;
-        while (pointer > 1) {
+        while (pointer >= 1) {
             sb.insert(0, pointer + " ");
             if (dp[pointer] == dp[pointer - 1] + 1) {
                 pointer--;
@@ -42,7 +40,6 @@ public class RightCalculator {
 
             pointer = pointer / 3;
         }
-        sb.insert(0, 1 + " ");
         sb.insert(0, dp[target] + "\n");
         return sb.toString();
     }
